@@ -39,6 +39,12 @@ class VirtualUser(TaskSet,Api):
 
 
 
+
+#Thu May 28 22:59:42 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __testname(self):
+        self.api('testname')
+
 class Staff(HttpLocust):
     '''放到最下面'''
     task_set = VirtualUser

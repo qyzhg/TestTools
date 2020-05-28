@@ -52,13 +52,16 @@ def json_to_yaml(name,url,meth):
                      '【2】：将文件只追加到性能测试脚本文件中\n'
                      '【3】：将文件只追加到接口测试脚本文件中\n'
                      '【4】：仅生成yaml文件，不向测试脚本文件中追加\n')
+
     if u_select == '':
         u_select = 1
+
     try:
         u_select = int(u_select)
     except ValueError:
         print('请输入正确的选项！')
         sys.exit(0)
+
     if u_select>4 or u_select<1:
         print('请输入正确的选项！')
         sys.exit(0)

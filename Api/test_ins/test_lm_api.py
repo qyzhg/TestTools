@@ -28,3 +28,7 @@ class test_lm_api(unittest.TestCase,Api):
         Api.__init__(self, self.s)
 
 
+#Thu May 28 22:59:42 2020该代码由工具自动生成，请检查后使用！
+    def test_testname(self):
+        r = self.api('testname')
+
