@@ -5,3 +5,5 @@
 使用命令 python(3) json_to_yaml.py --help可查看帮助<br>
 使用命令 python(3) json_to_yaml.py --u json文件中的json的接口地址 --n 接口名，不要重复，没做校验 --m 请求方式，该版本适配三种请求方式：POST/data,POST/json,GET<br>
 接口yaml文件会直接进入test_case目录中，文件名为 接口名.yaml 在locust_item/locustfile.py中，会追加写入性能测试方法，在test/test_api.py文件中会追加接口测试方法<br>
+locust使用方法：<br>
+进入locust目录中 使用命令 locust -f locustfile.py(仅限临时测试使用，服务器部署稳定版需使用docker)
