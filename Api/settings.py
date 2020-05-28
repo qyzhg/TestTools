@@ -21,6 +21,6 @@ HOST = 'http://10.102.111.117:8093/HCLCNNC/a/'
 
 CASE_DIR = os.path.join(BASE_DIR,'test_case')
 
-LOCUSRFILE_DIR = os.path.join(BASE_DIR,'locust_item_ins')
+LOCUSTFILE_DIR = os.path.join(BASE_DIR, 'locust_item_ins')
 
 TEST_API_DIR = os.path.join(BASE_DIR,'test_ins')

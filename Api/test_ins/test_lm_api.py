@@ -27,23 +27,4 @@ class test_lm_api(unittest.TestCase,Api):
         self.s = requests.Session()
         Api.__init__(self, self.s)
 
-#该代码由工具自动生成，请检查后使用！
-    def testtest(self):
-        r = self.api('test')
-
-#该代码由工具自动生成，请检查后使用！
-    def test_testname(self):
-        r = self.api('testname')
-
-#该代码由工具自动生成，请检查后使用！
-    def test_testname(self):
-        r = self.api('testname')
-
-#该代码由工具自动生成，请检查后使用！
-    def test_testname(self):
-        r = self.api('testname')
-
-#Thu May 28 21:36:54 2020该代码由工具自动生成，请检查后使用！
-    def test_testname(self):
-        r = self.api('testname')
 

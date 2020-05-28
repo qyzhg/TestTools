@@ -40,13 +40,30 @@ meth = args.m
 #yaml输出路径
 case_path = os.path.join(CASE_DIR,name) + '.yaml'
 #性能文件路径
-locustfile_path = os.path.join(LOCUSRFILE_DIR,'locustfile.py')
+locustfile_path = os.path.join(LOCUSTFILE_DIR, 'locustfile.py')
 #接口测试文件路径
 test_api_path = os.path.join(TEST_API_DIR,'test_lm_api.py')
 
 
 
 def json_to_yaml(name,url,meth):
+    u_select = input('是否需要将代码追加到文件中？\n'
+                     '【1】：将文件追加到性能测试脚本文件和接口测试脚本文件中(默认)\n'
+                     '【2】：将文件只追加到性能测试脚本文件中\n'
+                     '【3】：将文件只追加到接口测试脚本文件中\n'
+                     '【4】：仅生成yaml文件，不向测试脚本文件中追加\n')
+    if u_select == '':
+        u_select = 1
+    try:
+        u_select = int(u_select)
+    except ValueError:
+        print('请输入正确的选项！')
+        sys.exit(0)
+    if u_select>4 or u_select<1:
+        print('请输入正确的选项！')
+        sys.exit(0)
+
+    #生成yaml文件
     with open('json', 'r', encoding='utf-8') as f:
         dict_f = ast.literal_eval(str(f.read()))
         dict_var = {
@@ -59,21 +76,37 @@ def json_to_yaml(name,url,meth):
     with open(case_path,'w+',encoding='utf-8') as case_file:
         print(ruamel.yaml.dump(dict_var,Dumper=ruamel.yaml.RoundTripDumper,allow_unicode=True),file=case_file)
         print('已生成接口配置文件：'+case_path)
-        WriteTestCase(filepath=locustfile_path,
-                      linenum=-4,
-                      content="\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
-                              "@task(1)\n    "
-                              "def __{name}(self):\n        "
-                              "self.api('{name}')\n\n".format(name=name,t = time.ctime())
-                      )
-        print('该方法已生成到性能测试文件下')
-        WriteTestCase(filepath=test_api_path,
-                      linenum=-1,
-                      content="\n#{t}该代码由工具自动生成，请检查后使用！"
-                              "\n    def test_{name}(self):\n"
-                              "        r = self.api('{name}')\n".format(name = name,t = time.ctime())
-                      )
-        print('该方法已生成到接口测试文件下')
+
+    if u_select == 1:
+        make_locustfile(name=name)
+        male_apifile(name=name)
+
+    elif u_select == 2:
+        make_locustfile(name=name)
+
+    elif u_select == 3:
+        male_apifile(name=name)
+
+
+def make_locustfile(name):
+    WriteTestCase(filepath=locustfile_path,
+                  linenum=-4,
+                  content="\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
+                          "@task(1)\n    "
+                          "def __{name}(self):\n        "
+                          "self.api('{name}')\n\n".format(name=name,t = time.ctime())
+                  )
+    print('该方法已生成到性能测试文件下')
+
+
+def male_apifile(name):
+    WriteTestCase(filepath=test_api_path,
+                  linenum=-1,
+                  content="\n#{t}该代码由工具自动生成，请检查后使用！"
+                          "\n    def test_{name}(self):\n"
+                          "        r = self.api('{name}')\n".format(name = name,t = time.ctime())
+                  )
+    print('该方法已生成到接口测试文件下')
 
 
 json_to_yaml(name=name,url=url,meth=meth)
