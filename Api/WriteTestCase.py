@@ -38,7 +38,7 @@ def WriteTestCase(
         lf.write(s)
 
 if __name__ == '__main__':
-    WriteTestCase(filepath='../locust_item/测试写入.py',
+    WriteTestCase(filepath='../locust_item_ins/测试写入.py',
                   linenum=-4,
                   content="\n#该代码由工具自动生成，请检查后使用！\n    "
                           "@task(1)\n    "

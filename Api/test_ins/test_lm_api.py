@@ -7,9 +7,9 @@
  
 @Contact :   qyzhg@163.com
  
-@File    :   测试写入.py
+@File    :   test_lm_api.py
  
-@Time    :   2020/5/28 1:59 下午
+@Time    :   2020/5/27 4:27 下午
 '''
 
 
@@ -31,18 +31,3 @@ class test_lm_api(unittest.TestCase,Api):
 
     def test002(self):
         r = self.api('login_sheshi504')
-
-
-
-#该代码由工具自动生成，请检查后使用！
-    def testinspectionItem_asyQuery(self):
-        r = self.api('inspectionItem_asyQuery')
-
-#该代码由工具自动生成，请检查后使用！
-    def testinspectionItem_asyQuery(self):
-        r = self.api('inspectionItem_asyQuery')
-
-#该代码由工具自动生成，请检查后使用！
-    def testinspectionItem_asyQuery(self):
-        r = self.api('inspectionItem_asyQuery')
-

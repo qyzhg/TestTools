@@ -51,6 +51,10 @@ class VirtualUser(TaskSet,Api):
 
 
 
+#该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __aaaaccccbb(self):
+        self.api('aaaaccccbb')
 
 class Staff(HttpLocust):
     '''放到最下面'''

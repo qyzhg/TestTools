@@ -34,9 +34,9 @@ meth = args.m
 #yaml输出路径
 case_path = os.path.join(CASE_DIR,name) + '.yaml'
 #性能文件路径
-locustfile_path = os.path.join(LOCUSRFILE_DIR,'测试写入.py')
+locustfile_path = os.path.join(LOCUSRFILE_DIR,'locustfile.py')
 #接口测试文件路径
-test_api_path = os.path.join(TEST_API_DIR,'测试写入.py')
+test_api_path = os.path.join(TEST_API_DIR,'test_lm_api.py')
 
 
 
