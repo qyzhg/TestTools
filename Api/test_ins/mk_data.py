@@ -23,7 +23,7 @@ class MakeData(Api):
 
     def test(self):
         r = self.api('test')
-
+        print(r)
 if __name__ == '__main__':
     count = 1
     for _ in range(10000):
