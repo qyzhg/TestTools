@@ -27,14 +27,14 @@ def WriteTestCase(
     :return:
     '''
     lines=[]
-    with open(filepath,'r') as lf:
+    with open(filepath,'r',encoding='utf-8') as lf:
         for line in lf:
             lines.append(line)
     # print(lines)
     lines.insert(linenum,content)
     s = ''.join(lines)
 
-    with open(filepath,'w+') as lf:
+    with open(filepath,'w+',encoding='utf-8') as lf:
         lf.write(s)
 
 if __name__ == '__main__':

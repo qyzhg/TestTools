@@ -32,29 +32,8 @@ class VirtualUser(TaskSet,Api):
         '''
         self.s = self.client
         Api.__init__(self,self.s)
-        self.__login()      #登录
 
 
-    def __login(self):
-        '''登录方法'''
-        self.api('login_jituan')
-
-
-    @task(0)
-    def __asyquery(self):
-        self.api('asyquery')
-
-
-    @task(1)
-    def __inspectionItem_asyQuery(self):
-        self.api('inspectionItem_asyQuery')
-
-
-
-#该代码由工具自动生成，请检查后使用！
-    @task(1)
-    def __aaaaccccbb(self):
-        self.api('aaaaccccbb')
 
 class Staff(HttpLocust):
     '''放到最下面'''

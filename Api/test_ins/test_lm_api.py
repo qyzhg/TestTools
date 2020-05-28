@@ -20,14 +20,4 @@ from Api.API import Api
 class test_lm_api(unittest.TestCase,Api):
     def setUp(self) -> None:
         self.s = requests.Session()
-        self._login_jituan()
 
-    def _login_jituan(self):
-        self.api('login_jituan')
-
-    def test001(self):
-        r = self.api('asyquery')
-        print(r.json())
-
-    def test002(self):
-        r = self.api('login_sheshi504')

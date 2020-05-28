@@ -26,7 +26,7 @@ class Api(object):
 
     def api(self, case_name):
         file_name = case_name + '.yaml'
-        with open(os.path.join(CASE_DIR, file_name), 'r') as f:
+        with open(os.path.join(CASE_DIR, file_name), 'r',encoding='utf-8') as f:
             y = yaml.load(f.read(), Loader=yaml.FullLoader)
         # 获取yaml文件的参数
         url = HOST + y.get('url')  # 请求地址
