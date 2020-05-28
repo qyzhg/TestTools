@@ -1,0 +1,8 @@
+name: login_sheshi504
+url: login
+meth: POST/data
+params:
+  username: sheshi504
+  password: Caini123
+  isOriginLogin: 'true'
+

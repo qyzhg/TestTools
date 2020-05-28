@@ -1,0 +1,7 @@
+name: asyquery
+url: licenceManagement/lmCompanyMba/asyQuery
+meth: POST/json
+params:
+  id: '504'
+  name: ''
+
