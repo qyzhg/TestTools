@@ -8,8 +8,11 @@
 locust使用方法：<br>
 进入locust目录中 使用命令 locust -f locustfile.py(仅限临时测试使用，服务器部署稳定版需使用docker)<br>
 <hr>
-未实现功能备忘：<br>
+<p>
+<h3>
+未实现功能备忘：
+</h3></p>
 *添加yaml文件时，判断目录中是否存在同名文件，不是直接覆盖<br>
 *可以选择是否添加入代码<br>
-<p><h2>终极目标</h2></p>
+<p><h2 style="color: red">终极目标：</h2></p>
 <p>使用django重构项目</p>
