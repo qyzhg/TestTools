@@ -11,12 +11,18 @@
  
 @Time    :   2020/5/26 10:39 上午
 '''
-
-import ruamel.yaml
+try:
+    import ruamel.yaml
+except ImportError:
+    print('发现缺少的依赖库，工具正在尝试安装，如安装失败，请使用pip install ruamel.yaml命令自行安装')
+    import os
+    os.system('pip install ruamel.yaml')
+    import ruamel.yaml
 import ast
 import argparse
 import os
 import sys
+import time
 sys.path.append(os.path.abspath('../..'))
 from Api.settings import *
 from Api.WriteTestCase import WriteTestCase
@@ -55,17 +61,17 @@ def json_to_yaml(name,url,meth):
         print('已生成接口配置文件：'+case_path)
         WriteTestCase(filepath=locustfile_path,
                       linenum=-4,
-                      content="\n#该代码由工具自动生成，请检查后使用！\n    "
+                      content="\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
                               "@task(1)\n    "
                               "def __{name}(self):\n        "
-                              "self.api('{name}')\n\n".format(name=name)
+                              "self.api('{name}')\n\n".format(name=name,t = time.ctime())
                       )
         print('该方法已生成到性能测试文件下')
         WriteTestCase(filepath=test_api_path,
                       linenum=-1,
-                      content="\n#该代码由工具自动生成，请检查后使用！"
+                      content="\n#{t}该代码由工具自动生成，请检查后使用！"
                               "\n    def test_{name}(self):\n"
-                              "        r = self.api('{name}')\n".format(name = name)
+                              "        r = self.api('{name}')\n".format(name = name,t = time.ctime())
                       )
         print('该方法已生成到接口测试文件下')
 

@@ -11,8 +11,12 @@
  
 @Time    :   2020/5/27 2:51 下午
 '''
-
-import yaml
+try:
+    import yaml
+except ImportError:
+    print('发现缺少的依赖库，正在尝试安装，如果安装失败，请使用pip install pyyaml命令自行安装')
+    import os
+    os.system('pip install pyyaml')
 from Api.settings import *
 
 class Api(object):

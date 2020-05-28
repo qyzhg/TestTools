@@ -14,7 +14,12 @@
 
 
 import unittest
-import requests
+try:
+    import requests
+except ImportError:
+    print('发现缺少的依赖库，正在尝试安装，如果安装失败，请使用pip install requests命令自行安装')
+    import os
+    os.system('pip install requests')
 from Api.API import Api
 
 class test_lm_api(unittest.TestCase,Api):
@@ -25,4 +30,20 @@ class test_lm_api(unittest.TestCase,Api):
 #该代码由工具自动生成，请检查后使用！
     def testtest(self):
         r = self.api('test')
+
+#该代码由工具自动生成，请检查后使用！
+    def test_testname(self):
+        r = self.api('testname')
+
+#该代码由工具自动生成，请检查后使用！
+    def test_testname(self):
+        r = self.api('testname')
+
+#该代码由工具自动生成，请检查后使用！
+    def test_testname(self):
+        r = self.api('testname')
+
+#Thu May 28 21:36:54 2020该代码由工具自动生成，请检查后使用！
+    def test_testname(self):
+        r = self.api('testname')
 
