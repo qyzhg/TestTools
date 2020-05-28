@@ -64,7 +64,7 @@ def json_to_yaml(name,url,meth):
         WriteTestCase(filepath=test_api_path,
                       linenum=-1,
                       content="\n#该代码由工具自动生成，请检查后使用！"
-                              "\n    def test{name}(self):\n"
+                              "\n    def test_{name}(self):\n"
                               "        r = self.api('{name}')\n".format(name = name)
                       )
         print('该方法已生成到接口测试文件下')
