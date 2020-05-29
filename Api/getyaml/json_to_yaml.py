@@ -36,7 +36,10 @@ parser.add_argument('--m', type=str,help='请求方式，只能输入三种请�
 args = parser.parse_args()
 #获取参数
 name = args.n
+#处理带有前缀的URL
 url = args.u
+if HOST in url:
+    url = url.split(HOST)[1]
 meth = args.m
 #yaml输出路径
 case_path = os.path.join(CASE_DIR,name) + '.yaml'
