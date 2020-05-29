@@ -35,19 +35,7 @@ class test_lm_api(unittest.TestCase,Api):
         r = self.api('login_sheshi')
         print(r.text)
 
-#Fri May 29 16:25:17 2020该代码由工具自动生成，请检查后使用！
-    def test_licenseBusiness_asyListQuery(self):
-        r = self.api('licenseBusiness_asyListQuery')
-
-#Fri May 29 16:29:34 2020该代码由工具自动生成，请检查后使用！
-    def test_licenseBusiness_asyListQuery(self):
-        r = self.api('licenseBusiness_asyListQuery')
-
-#Fri May 29 16:30:30 2020该代码由工具自动生成，请检查后使用！
-    def test_licenseBusiness_asyListQuery(self):
-        r = self.api('licenseBusiness_asyListQuery')
-
-#Fri May 29 16:31:25 2020该代码由工具自动生成，请检查后使用！
+#Fri May 29 16:45:57 2020该代码由工具自动生成，请检查后使用！
     def test_licenseBusiness_asyListQuery(self):
         r = self.api('licenseBusiness_asyListQuery')
 
