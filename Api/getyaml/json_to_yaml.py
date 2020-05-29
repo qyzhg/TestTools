@@ -40,10 +40,8 @@ url = args.u
 if HOST in url:
     url = url.split(HOST)[1]
 name = args.n
-print(name)
 if name == '@auto':
     name = url.replace('/','_')
-    print(name)
 meth = args.m
 #yaml输出路径
 case_path = os.path.join(CASE_DIR,name) + '.yaml'

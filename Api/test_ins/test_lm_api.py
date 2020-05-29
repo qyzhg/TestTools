@@ -40,3 +40,7 @@ class test_lm_api(unittest.TestCase,Api):
     def test_licenseBusiness_asyListQuery(self):
         r = self.api('licenseBusiness_asyListQuery')
 
+#Fri May 29 17:50:57 2020该代码由工具自动生成，请检查后使用！
+    def test_licenseBusiness_asyListQuery(self):
+        r = self.api('licenseBusiness_asyListQuery')
+
