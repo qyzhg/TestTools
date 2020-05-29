@@ -101,13 +101,13 @@ def json_to_yaml(name,url,meth):
 
     if u_select == 1:
         make_locustfile(name=name)
-        male_apifile(name=name)
+        make_apifile(name=name)
 
     elif u_select == 2:
         make_locustfile(name=name)
 
     elif u_select == 3:
-        male_apifile(name=name)
+        make_apifile(name=name)
 
 
 def make_locustfile(name):
@@ -121,7 +121,7 @@ def make_locustfile(name):
     print('该方法已生成到性能测试文件下')
 
 
-def male_apifile(name):
+def make_apifile(name):
     WriteTestCase(filepath=test_api_path,
                   linenum=-1,
                   content="\n#{t}该代码由工具自动生成，请检查后使用！"

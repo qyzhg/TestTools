@@ -61,6 +61,12 @@ class VirtualUser(TaskSet,Api):
     def __licenseBusiness_asyListQuery(self):
         self.api('licenseBusiness_asyListQuery')
 
+
+#Fri May 29 17:57:03 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __licenseBusiness_asyListQuery(self):
+        self.api('licenseBusiness_asyListQuery')
+
 class Staff(HttpLocust):
     '''放到最下面'''
     task_set = VirtualUser
