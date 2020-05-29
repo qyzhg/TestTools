@@ -1,8 +1,0 @@
-name: test
-url: inspectionmanagement/inspectionItem/asyQuery
-meth: POST/json
-params:
-  username: sheshi504
-  password: Caini123
-  isOriginLogin: 'true'
-

@@ -27,4 +27,15 @@ class test_lm_api(unittest.TestCase,Api):
     def setUp(self) -> None:
         self.s = requests.Session()
         Api.__init__(self, self.s)
+        self.test_login_sheshi()
+
+
+#Fri May 29 16:20:00 2020该代码由工具自动生成，请检查后使用！
+    def test_login_sheshi(self):
+        r = self.api('login_sheshi')
+        print(r.text)
+
+#Fri May 29 16:25:17 2020该代码由工具自动生成，请检查后使用！
+    def test_licenseBusiness_asyListQuery(self):
+        r = self.api('licenseBusiness_asyListQuery')
 
