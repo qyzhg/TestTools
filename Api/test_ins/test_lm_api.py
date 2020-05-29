@@ -32,3 +32,47 @@ class test_lm_api(unittest.TestCase,Api):
     def test_testname(self):
         r = self.api('testname')
 
+#Fri May 29 14:42:43 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 14:50:21 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 14:50:45 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 14:51:06 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 14:51:19 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 14:54:19 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 14:56:32 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 15:02:34 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 15:04:13 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 15:05:16 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+
+#Fri May 29 15:07:17 2020该代码由工具自动生成，请检查后使用！
+    def test_test(self):
+        r = self.api('test')
+

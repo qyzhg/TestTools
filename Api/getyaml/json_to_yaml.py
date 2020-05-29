@@ -26,6 +26,7 @@ import time
 sys.path.append(os.path.abspath('../..'))
 from Api.settings import *
 from Api.WriteTestCase import WriteTestCase
+from data_to_json import DataToJson
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
 parser.add_argument('--n', type=str,help='接口名，例如：login')
@@ -68,14 +69,27 @@ def json_to_yaml(name,url,meth):
 
     #生成yaml文件
     with open('json', 'r', encoding='utf-8') as f:
-        dict_f = ast.literal_eval(str(f.read()))
-        dict_var = {
-                    'name':name,
-                    'url':url,
-                    'meth':meth,
+        try:
+            dict_f = ast.literal_eval(str(f.read()))
+            dict_var = {
+                        'name':name,
+                        'url':url,
+                        'meth':meth,
+                        'params':
+                            dict_f
+                        }
+        except:
+            DataToJson()
+            with open('json', 'r', encoding='utf-8') as f:
+                dict_f = ast.literal_eval(str(f.read()))
+                dict_var = {
+                    'name': name,
+                    'url': url,
+                    'meth': meth,
                     'params':
                         dict_f
-                    }
+                }
+
     with open(case_path,'w+',encoding='utf-8') as case_file:
         print(ruamel.yaml.dump(dict_var,Dumper=ruamel.yaml.RoundTripDumper,allow_unicode=True),file=case_file)
         print('已生成接口配置文件：'+case_path)

@@ -2,7 +2,7 @@ name: test
 url: inspectionmanagement/inspectionItem/asyQuery
 meth: POST/json
 params:
-  inspectionTemplate:
-    id: 0bebd17597b14ecd82197696e8520174
-  itemContent: ''
+  username: sheshi504
+  password: Caini123
+  isOriginLogin: 'true'
 
