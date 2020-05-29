@@ -13,8 +13,11 @@
 '''
 
 
-from Api.API import Api
+import os
+import sys
 import requests
+sys.path.append(os.path.abspath('../..'))
+from Api.API import Api
 
 class MakeData(Api):
     def __init__(self):
