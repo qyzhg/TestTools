@@ -29,8 +29,8 @@ from Api.WriteTestCase import WriteTestCase
 from data_to_json import DataToJson
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
-parser.add_argument('--n', type=str,help='接口名，例如：login')
-parser.add_argument('--u', type=str,help='接口地址，例如：a/login')
+parser.add_argument('--n', type=str,help='接口名，例如：login，输入@auto可以根据接口地址自动生成接口名')
+parser.add_argument('--u', type=str,help='接口地址，例如：a/login，配置好settings中的HOST后，可以直接输入完整地址')
 parser.add_argument('--m', type=str,help='请求方式，只能输入三种请求方式：GET，POST/data，POST/json')
 
 args = parser.parse_args()
@@ -68,7 +68,7 @@ def json_to_yaml(name,url,meth):
         print('请输入正确的选项！')
         sys.exit(0)
 
-    if u_select>4 or u_select<1:
+    if u_select > 4 or u_select < 1:
         print('请输入正确的选项！')
         sys.exit(0)
 
@@ -111,9 +111,9 @@ def json_to_yaml(name,url,meth):
 
 
 def make_locustfile(name):
-    WriteTestCase(filepath=locustfile_path,
-                  linenum=-4,
-                  content="\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
+    WriteTestCase(filepath = locustfile_path,
+                  linenum = -4,
+                  content = "\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
                           "@task(1)\n    "
                           "def __{name}(self):\n        "
                           "self.api('{name}')\n\n".format(name=name,t = time.ctime())

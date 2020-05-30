@@ -30,7 +30,11 @@ class Api(object):
 
 
     def api(self, case_name):
-        file_name = case_name + '.yaml'
+        if case_name[-5:] != '.yaml':
+            file_name = case_name + '.yaml'
+        else:
+            file_name = case_name
+        print(file_name)
         with open(os.path.join(CASE_DIR, file_name), 'r',encoding='utf-8') as f:
             y = yaml.load(f.read(), Loader=yaml.FullLoader)
         # 获取yaml文件的参数
