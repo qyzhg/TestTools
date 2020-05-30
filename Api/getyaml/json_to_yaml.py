@@ -53,7 +53,7 @@ def json_to_yaml(name,url,meth,case_path):
                         }
         except:
             DataToJson()
-            with open('json', 'r', encoding='utf-8') as f:
+            with open(JSON_FILE, 'r', encoding='utf-8') as f:
                 dict_f = ast.literal_eval(str(f.read()))
                 dict_var = {
                     'name': name,
