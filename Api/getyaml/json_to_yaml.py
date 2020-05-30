@@ -26,7 +26,7 @@ import time
 sys.path.append(os.path.abspath('../..'))
 from Api.settings import *
 from Api.WriteTestCase import WriteTestCase
-from data_to_json import DataToJson
+from Api.getyaml.data_to_json import DataToJson
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
 parser.add_argument('--n', type=str,help='接口名，例如：login，输入@auto可以根据接口地址自动生成接口名')
@@ -53,61 +53,67 @@ test_api_path = os.path.join(TEST_API_DIR,'test_lm_api.py')
 
 
 def json_to_yaml(name,url,meth):
-    u_select = input('是否需要将代码追加到文件中？\n'
-                     '【1】：将文件追加到性能测试脚本文件和接口测试脚本文件中(默认)\n'
-                     '【2】：将文件只追加到性能测试脚本文件中\n'
-                     '【3】：将文件只追加到接口测试脚本文件中\n'
-                     '【4】：仅生成yaml文件，不向测试脚本文件中追加\n')
+    if (os.path.isfile(case_path)):
+        a = input('目录中已存在同名测试用例文件：{case_path},请选择是否覆盖\nY:覆盖 \nN:取消操作\n'.format(case_path = case_path)).upper()
+        if a == 'Y' or a == 'YES':
+            u_select = input('是否需要将代码追加到文件中？\n'
+                             '【1】：将文件追加到性能测试脚本文件和接口测试脚本文件中(默认)\n'
+                             '【2】：将文件只追加到性能测试脚本文件中\n'
+                             '【3】：将文件只追加到接口测试脚本文件中\n'
+                             '【4】：仅生成yaml文件，不向测试脚本文件中追加\n')
 
-    if u_select == '':
-        u_select = 1
+            if u_select == '':
+                u_select = 1
 
-    try:
-        u_select = int(u_select)
-    except ValueError:
-        print('请输入正确的选项！')
-        sys.exit(0)
+            try:
+                u_select = int(u_select)
+            except ValueError:
+                print('请输入正确的选项！')
+                sys.exit(0)
 
-    if u_select > 4 or u_select < 1:
-        print('请输入正确的选项！')
-        sys.exit(0)
-
-    #生成yaml文件
-    with open('json', 'r', encoding='utf-8') as f:
-        try:
-            dict_f = ast.literal_eval(str(f.read()))
-            dict_var = {
-                        'name':name,
-                        'url':url,
-                        'meth':meth,
-                        'params':
-                            dict_f
-                        }
-        except:
-            DataToJson()
+            if u_select > 4 or u_select < 1:
+                print('请输入正确的选项！')
+                sys.exit(0)
+            #生成yaml文件
             with open('json', 'r', encoding='utf-8') as f:
-                dict_f = ast.literal_eval(str(f.read()))
-                dict_var = {
-                    'name': name,
-                    'url': url,
-                    'meth': meth,
-                    'params':
-                        dict_f
-                }
+                try:
+                    dict_f = ast.literal_eval(str(f.read()))
+                    dict_var = {
+                                'name':name,
+                                'url':url,
+                                'meth':meth,
+                                'params':
+                                    dict_f
+                                }
+                except:
+                    DataToJson()
+                    with open('json', 'r', encoding='utf-8') as f:
+                        dict_f = ast.literal_eval(str(f.read()))
+                        dict_var = {
+                            'name': name,
+                            'url': url,
+                            'meth': meth,
+                            'params':
+                                dict_f
+                        }
 
-    with open(case_path,'w+',encoding='utf-8') as case_file:
-        print(ruamel.yaml.dump(dict_var,Dumper=ruamel.yaml.RoundTripDumper,allow_unicode=True),file=case_file)
-        print('已生成接口配置文件：'+case_path)
+            with open(case_path,'w+',encoding='utf-8') as case_file:
+                print(ruamel.yaml.dump(dict_var,Dumper=ruamel.yaml.RoundTripDumper,allow_unicode=True),file=case_file)
+                print('已生成接口配置文件：'+case_path)
 
-    if u_select == 1:
-        make_locustfile(name=name)
-        make_apifile(name=name)
+            if u_select == 1:
+                make_locustfile(name=name)
+                make_apifile(name=name)
 
-    elif u_select == 2:
-        make_locustfile(name=name)
+            elif u_select == 2:
+                make_locustfile(name=name)
 
-    elif u_select == 3:
-        make_apifile(name=name)
+            elif u_select == 3:
+                make_apifile(name=name)
+        elif a == 'N' or a == 'NO':
+            sys.exit(0)
+        else:
+            print('选择有误！')
 
 
 def make_locustfile(name):

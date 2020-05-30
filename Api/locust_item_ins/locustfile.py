@@ -67,6 +67,66 @@ class VirtualUser(TaskSet,Api):
     def __licenseBusiness_asyListQuery(self):
         self.api('licenseBusiness_asyListQuery')
 
+
+#Sat May 30 17:28:51 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test(self):
+        self.api('test')
+
+
+#Sat May 30 17:29:44 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test(self):
+        self.api('test_test')
+
+
+#Sat May 30 17:29:57 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test(self):
+        self.api('test_test')
+
+
+#Sat May 30 17:33:58 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test(self):
+        self.api('test_test')
+
+
+#Sat May 30 17:34:32 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test1(self):
+        self.api('test_test1')
+
+
+#Sat May 30 17:35:16 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test1(self):
+        self.api('test_test1')
+
+
+#Sat May 30 17:37:22 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test1(self):
+        self.api('test_test1')
+
+
+#Sat May 30 17:40:30 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test1(self):
+        self.api('test_test1')
+
+
+#Sat May 30 17:41:01 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test1(self):
+        self.api('test_test1')
+
+
+#Sat May 30 17:43:57 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __test_test1(self):
+        self.api('test_test1')
+
 class Staff(HttpLocust):
     '''放到最下面'''
     task_set = VirtualUser
