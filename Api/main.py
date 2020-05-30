@@ -30,10 +30,19 @@ args = parser.parse_args()
 #获取参数
 #处理带有前缀的URL
 url = args.u
+if url == None:
+    print('请带参数运行此工具，需要帮助请使用--help命令')
+    sys.exit(0)
 if HOST in url:
     url = url.split(HOST)[1]
 meth = args.m
+if meth == None:
+    print('请带参数运行此工具，需要帮助请使用--help命令')
+    sys.exit(0)
 name = args.n
+if name == None:
+    print('请带参数运行此工具，需要帮助请使用--help命令')
+    sys.exit(0)
 if name == '@auto':
     name = (url + '_' + meth.upper()).replace('/','_')
 #yaml输出路径
