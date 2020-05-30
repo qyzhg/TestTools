@@ -21,6 +21,13 @@ HOST = 'http://10.102.111.117:8093/HCLCNNC/a/'
 
 CASE_DIR = os.path.join(BASE_DIR,'test_case')
 
-LOCUSTFILE_DIR = os.path.join(BASE_DIR, 'locust_item_ins')
+LOCUSTFILE_DIR = os.path.join(BASE_DIR, 'locust_item')
 
-TEST_API_DIR = os.path.join(BASE_DIR,'test_ins')
+LOCUSTFILE_FILE = os.path.join(LOCUSTFILE_DIR,'locustfile.py')
+
+TEST_API_DIR = os.path.join(BASE_DIR,'test_api')
+
+TEST_API_FILE = os.path.join(TEST_API_DIR,'test_api.py')
+
+JSON_FILE = os.path.join(BASE_DIR,'getyaml','json')
+
