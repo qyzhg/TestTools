@@ -47,10 +47,7 @@ if name == '@auto':
     name = (url + '_' + meth.upper()).replace('/','_')
 #yaml输出路径
 case_path = os.path.join(CASE_DIR,name) + '.yaml'
-#性能文件路径
-locustfile_path = os.path.join(LOCUSTFILE_DIR, 'locustfile.py')
-#接口测试文件路径
-test_api_path = os.path.join(TEST_API_DIR,'test_api.py')
+
 
 if None in [name,url,meth]:
     print('缺少必要的参数，请使用--help参数查看帮助')
