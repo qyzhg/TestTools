@@ -27,14 +27,15 @@ class VirtualUser(TaskSet,Api):
     '''
     虚拟用户类
     '''
-    def on_start(self):
+    def on_start(self) -> None:
         '''
         -初始化方法
         -将需要的类在此方法中实例化
-        :return:
+        :return:None
         '''
         self.s = self.client
         Api.__init__(self,self.s)
+
 
 
 class Staff(HttpLocust):
