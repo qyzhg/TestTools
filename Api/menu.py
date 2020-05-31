@@ -23,7 +23,9 @@ def menu(name,url,meth,case_path):
           '【1】：将文件追加到性能测试脚本文件和接口测试脚本文件中(默认)\n'
           '【2】：将文件只追加到性能测试脚本文件中\n'
           '【3】：将文件只追加到接口测试脚本文件中\n'
-          '【4】：仅生成yaml文件，不向测试脚本文件中追加\n')
+          '【4】：仅生成yaml文件，不向测试脚本文件中追加\n'
+          '【exit】：退出\n'
+          )
 
     while True:
         is_mk_code = input('请输入功能序号\n')
@@ -58,5 +60,10 @@ def menu(name,url,meth,case_path):
                          meth=meth,
                          case_path=case_path)
             break
+
+        elif is_mk_code.upper() == 'EXIT':
+            print('已退出！')
+            sys.exit(0)
+
         else:
             print('输入有误，请重新选择')

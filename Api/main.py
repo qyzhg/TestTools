@@ -65,6 +65,7 @@ if os.path.isfile(case_path):
             menu(name=name,url=url,meth=meth,case_path=case_path)
             break
         elif is_replace == 'N' or is_replace == 'NO':
+            print('已取消操作！')
             sys.exit(0)
         else:
             print('输入有误，请重新选择')
