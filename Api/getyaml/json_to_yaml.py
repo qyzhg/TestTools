@@ -73,11 +73,11 @@ def json_to_yaml(name,url,meth,case_path):
 
 def make_locustfile(name):
     WriteTestCase(filepath = LOCUSTFILE_FILE,
-                  linenum = -4,
+                  linenum = -22,
                   content = "\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
                           "@task(1)\n    "
                           "def __{name}(self):\n        "
-                          "self.api('{name}')\n\n".format(name=name,t = time.ctime())
+                          "self.Api.api('{name}')\n\n".format(name=name,t = time.ctime())
                   )
     print('该方法已生成到性能测试文件下')
 

@@ -6,33 +6,51 @@
 
 
 import os,sys
-try:
-    from locust import HttpUser,TaskSet,task,between
-except ImportError:
-    print('发现缺少的依赖库，正在尝试安装，如果安装失败，请使用pip install locust命令自行安装')
-    os.system('pip install locust')
-    from locust import HttpUser, TaskSet, task, between
 sys.path.append(os.path.abspath('../../..'))
 from Api.public.API import Api
 
 
-class VirtualUser(TaskSet,Api):
-    '''
-    虚拟用户类
-    '''
-    def on_start(self) -> None:
-        '''
-        -初始化方法
-        -将需要的类在此方法中实例化
-        :return:None
-        '''
+import gevent
+from locust import HttpUser, task, between
+from locust.env import Environment
+from locust.stats import stats_printer
+from locust.log import setup_logging
+
+setup_logging("INFO", None)
+
+
+class User(HttpUser):
+    wait_time = between(1, 3)
+    host = ""
+
+    def on_start(self):
         self.s = self.client
-        Api.__init__(self,self.s)
+        self.Api = Api(self.s)
 
 
 
 
-class Staff(HttpUser):
-    '''放到最下面'''
-    task_set = VirtualUser
-    wait_time = between(0.5, 3)
+
+
+
+# 设置环境
+env = Environment(user_classes=[User])
+env.create_local_runner()
+
+# 浏览器地址
+env.create_web_ui("127.0.0.1", 8089)
+
+# 命令行定时刷新
+# gevent.spawn(stats_printer(env.stats))
+
+# 直接在命令行启动
+# env.runner.start(1, hatch_rate=10)
+
+# 定时器（秒）
+gevent.spawn_later(15, lambda: env.runner.quit())
+
+# 集合点
+env.runner.greenlet.join()
+
+# 停止web
+env.web_ui.stop()
