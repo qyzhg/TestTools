@@ -19,7 +19,7 @@ import sys
 sys.path.append(os.path.abspath('../'))
 from Api.public.menu import menu
 from Api.settings import *
-from Api.public.make_project import make_locust_project,make_test_api_dir
+from Api.public.make_project import make_locust_dir,make_test_api_dir,make_case_dir
 
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
@@ -32,9 +32,11 @@ args = parser.parse_args()
 
 start = args.start
 if start:
-    locust_dir,test_api_dir = (os.path.join(BASE_DIR,'locust_dir_'+start)),(os.path.join(BASE_DIR,'test_api_'+start))
-    make_locust_project(locust_dir)
+    start = start.upper()
+    locust_dir,test_api_dir,case_dir = (os.path.join(PARENT_LOCUSTFILE_DIR,start)),(os.path.join(PARENT_TEST_API_DIR,start)),(os.path.join(PARENT_CASE_DIR,start))
+    make_locust_dir(locust_dir)
     make_test_api_dir(test_api_dir)
+    make_case_dir(case_dir)
     sys.exit(0)
 
 

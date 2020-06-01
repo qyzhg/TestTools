@@ -13,15 +13,15 @@
 '''
 import os
 from shutil import copyfile
-from Api.settings import TEMPLATE_DIR
+from Api.settings import TEMPLATE_DIR,PARENT_CASE_DIR
 
-def make_locust_project(locust_dir):
+def make_locust_dir(locust_dir):
     if os.path.isdir(locust_dir):
         print('新建locust项目失败！\n{locust_dir}目录已存在，请检查路径！'.format(locust_dir = locust_dir))
     else:
         #新建locust项目目录
         os.makedirs(locust_dir)
-        print('新建locust目录成功!\n{locust_dir}\n使用时请在Api>settings中将项目自行注册到LOCUSTFILE_DIR中'.format(locust_dir = locust_dir))
+        print('新建locust目录成功!\n{locust_dir}\n'.format(locust_dir = locust_dir))
         make_locust_files(locust_dir)
 
 
@@ -31,8 +31,18 @@ def make_test_api_dir(test_api_dir):
     else:
         # 新建test_api项目目录
         os.makedirs(test_api_dir)
-        print('新建test_api目录成功!\n{test_api_dir}\n使用时请在Api>settings中将项目自行注册到TEST_API_DIR中'.format(test_api_dir=test_api_dir))
+        print('新建test_api目录成功!\n{test_api_dir}\n'.format(test_api_dir=test_api_dir))
         make_test_api_files(test_api_dir)
+
+
+def make_case_dir(case_dir):
+    if os.path.isdir(case_dir):
+        print('新建case_dir项目失败！\n{case_dir}目录已存在，请检查路径！'.format(case_dir=case_dir))
+    else:
+        # 新建case_dir项目目录
+        os.makedirs(case_dir)
+        print('新建case_dir目录成功!\n{case_dir}\n'.format(
+            case_dir=case_dir))
 
 
 def make_locust_files(locust_dir):

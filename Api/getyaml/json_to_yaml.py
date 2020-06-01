@@ -63,10 +63,13 @@ def json_to_yaml(name,url,meth,case_path):
                         dict_f
                 }
 
-    with open(case_path,'w+',encoding='utf-8') as case_file:
-        print(ruamel.yaml.dump(dict_var,Dumper=ruamel.yaml.RoundTripDumper,allow_unicode=True),file=case_file)
-        print('已生成接口配置文件：'+case_path)
-
+    try:
+        with open(case_path,'w+',encoding='utf-8') as case_file:
+            print(ruamel.yaml.dump(dict_var,Dumper=ruamel.yaml.RoundTripDumper,allow_unicode=True),file=case_file)
+            print('已生成接口配置文件：'+case_path)
+    except FileNotFoundError:
+        print('项目目录不存在，请检查项目目录和settings文件中的PROJECT_NAME配置!')
+        sys.exit(0)
 
 def make_locustfile(name):
     WriteTestCase(filepath = LOCUSTFILE_FILE,
