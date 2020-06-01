@@ -16,7 +16,7 @@
 import os
 
 #此处配置项目名称
-PROJECT_NAME = 'test'
+PROJECT_NAME = 'TEST_LOCUST'
 
 PROJECT_NAME = PROJECT_NAME.upper()
 
