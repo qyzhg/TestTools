@@ -17,16 +17,29 @@ import argparse
 import os
 import sys
 sys.path.append(os.path.abspath('../'))
-from Api.menu import menu
+from Api.public.menu import menu
 from Api.settings import *
+from Api.public.make_project import make_locust_project,make_test_api_dir
 
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
 parser.add_argument('--n', type=str,help='接口名，例如：login，输入@auto可以根据接口地址自动生成接口名')
 parser.add_argument('--u', type=str,help='接口地址，例如：a/login，配置好settings中的HOST后，可以直接输入完整地址')
 parser.add_argument('--m', type=str,help='请求方式，只能输入三种请求方式：GET，POST/data，POST/json')
+parser.add_argument('-start',type=str,help='生成项目目录')
 
 args = parser.parse_args()
+
+start = args.start
+if start:
+    locust_dir,test_api_dir = (os.path.join(BASE_DIR,'locust_dir_'+start)),(os.path.join(BASE_DIR,'test_api_'+start))
+    make_locust_project(locust_dir)
+    make_test_api_dir(test_api_dir)
+    sys.exit(0)
+
+
+
+
 #获取参数
 #处理带有前缀的URL
 url = args.u

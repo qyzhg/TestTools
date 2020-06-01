@@ -20,7 +20,7 @@ except ImportError:
     os.system('pip install locust')
     from locust import HttpLocust, TaskSet, task, between
 sys.path.append(os.path.abspath('../..'))
-from Api.API import Api
+from Api.public.API import Api
 
 
 class VirtualUser(TaskSet,Api):
@@ -36,6 +36,13 @@ class VirtualUser(TaskSet,Api):
         self.s = self.client
         Api.__init__(self,self.s)
 
+
+
+
+#Mon Jun  1 10:00:44 2020:该代码由工具自动生成，请检查后使用！
+    @task(1)
+    def __login_POST_DATA(self):
+        self.api('login_POST_DATA')
 
 
 class Staff(HttpLocust):

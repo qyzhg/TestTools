@@ -2,15 +2,8 @@
 
 # -*- encoding: utf-8 -*-
 
-'''
-@Author  :   Zhuang_Qingyao
- 
-@Contact :   qyzhg@163.com
- 
-@File    :   test_api.py
- 
-@Time    :   2020/5/27 4:27 下午
-'''
+#该文件由程序自动生成，请检查后使用
+
 
 import sys
 import unittest
@@ -22,9 +15,10 @@ except ImportError:
     os.system('pip install requests')
     import requests
 sys.path.append(os.path.abspath('../..'))
-from Api.API import Api
+from Api.public.API import Api
 
 class test_api(unittest.TestCase, Api):
     def setUp(self) -> None:
         self.s = requests.Session()
+        # self.login()
 

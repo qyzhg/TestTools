@@ -24,7 +24,7 @@ import sys
 import time
 sys.path.append(os.path.abspath('../..'))
 from Api.settings import *
-from Api.WriteTestCase import WriteTestCase
+from Api.public.WriteTestCase import WriteTestCase
 from Api.getyaml.data_to_json import DataToJson
 
 

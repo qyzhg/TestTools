@@ -14,7 +14,7 @@
 
 
 import sys,os
-sys.path.append(os.path.abspath('../'))
+sys.path.append(os.path.abspath('../../'))
 from Api.getyaml.json_to_yaml import json_to_yaml,make_locustfile,make_apifile
 
 

@@ -11,13 +11,14 @@
  
 @Time    :   2019/11/5 2:07 下午
 '''
+from Api.settings import *
 
 def DataToJson():
     print('非json格式，正在尝试转换为json格式...')
-    with open('json', 'r', encoding='utf-8') as datas:
+    with open(JSON_FILE, 'r', encoding='utf-8') as datas:
         datas = datas.readlines()
 
-    with open('json','w',encoding='utf-8') as f:
+    with open(JSON_FILE,'w',encoding='utf-8') as f:
         f.writelines('{')
         for data in datas:
             try:
