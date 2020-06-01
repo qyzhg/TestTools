@@ -18,11 +18,12 @@ import os
 #此处配置项目名称
 PROJECT_NAME = 'TEST_LOCUST'
 
+#此处配置项目路径
+HOST = 'http://10.102.111.117:8093/HCLCNNC/a/'
+
 PROJECT_NAME = PROJECT_NAME.upper()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-HOST = 'http://10.102.111.117:8093/HCLCNNC/a/'
 
 PARENT_CASE_DIR = os.path.join(BASE_DIR,'case_dir')
 
