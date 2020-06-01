@@ -32,6 +32,13 @@ args = parser.parse_args()
 
 start = args.start
 if start:
+    if not os.path.isdir(PARENT_CASE_DIR):
+        os.makedirs(PARENT_CASE_DIR)
+    if not os.path.isdir(PARENT_TEST_API_DIR):
+        os.makedirs(PARENT_TEST_API_DIR)
+    if not os.path.isdir(PARENT_LOCUSTFILE_DIR):
+        os.makedirs(PARENT_LOCUSTFILE_DIR)
+
     start = start.upper()
     locust_dir,test_api_dir,case_dir = (os.path.join(PARENT_LOCUSTFILE_DIR,start)),(os.path.join(PARENT_TEST_API_DIR,start)),(os.path.join(PARENT_CASE_DIR,start))
     make_locust_dir(locust_dir)
