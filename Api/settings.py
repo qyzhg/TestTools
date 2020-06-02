@@ -42,3 +42,4 @@ TEST_API_FILE = os.path.join(TEST_API_DIR,'test_api.py')
 JSON_FILE = os.path.join(BASE_DIR,'getyaml','json')
 
 TEMPLATE_DIR = os.path.join(BASE_DIR,'public','template')
+

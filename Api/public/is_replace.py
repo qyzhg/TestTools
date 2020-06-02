@@ -11,8 +11,6 @@
  
 @Time    :   2020/6/2 9:06 上午
 '''
-import sys
-
 from Api.public.menu import menu
 
 
