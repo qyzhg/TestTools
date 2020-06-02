@@ -4,7 +4,7 @@
 ### **`创建项目：`**
 ##### 1.CD到项目根目录下（Api目录）。
 ##### 2.输入命令：python main.py -start 项目名 例如：
-```shell script
+```
 python main.py -start hengsuan504
 ```
 ##### 3.此时，系统会生成几个新的目录，用于管理你的项目，目录结构如下：
@@ -53,7 +53,7 @@ if __name__ == '__main__':
 ### **`根据测试用例yaml文件生成测试脚本：`**
 ##### 1.先在settings文件中将PROJECT_NAME变量改为需要生成的项目的名称
 ##### 2.CD到Api目录下，使用命令 python main.py -cs 项目名称，例如：
-```shell script
+```
 python main.py -cs hengsuan504
 ```
 ##### 3.根据提示即可生成测试脚本
