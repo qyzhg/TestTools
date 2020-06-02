@@ -7,13 +7,33 @@
  
 @Contact :   qyzhg@163.com
  
-@File    :   make_project.py
+@File    :   start.py
  
-@Time    :   2020/6/1 10:40 上午
+@Time    :   2020/6/2 8:51 上午
 '''
 import os
+import sys
 from shutil import copyfile
-from Api.settings import TEMPLATE_DIR,PARENT_CASE_DIR
+
+from Api.settings import PARENT_LOCUSTFILE_DIR,PARENT_CASE_DIR,PARENT_TEST_API_DIR,TEMPLATE_DIR
+
+
+def start_project(startname):
+    if not os.path.isdir(PARENT_CASE_DIR):
+        os.makedirs(PARENT_CASE_DIR)
+    if not os.path.isdir(PARENT_TEST_API_DIR):
+        os.makedirs(PARENT_TEST_API_DIR)
+    if not os.path.isdir(PARENT_LOCUSTFILE_DIR):
+        os.makedirs(PARENT_LOCUSTFILE_DIR)
+
+    start = startname.upper()
+    locust_dir, test_api_dir, case_dir = (os.path.join(PARENT_LOCUSTFILE_DIR, start)), (
+        os.path.join(PARENT_TEST_API_DIR, start)), (os.path.join(PARENT_CASE_DIR, start))
+    make_locust_dir(locust_dir)
+    make_test_api_dir(test_api_dir)
+    make_case_dir(case_dir)
+    sys.exit(0)
+
 
 def make_locust_dir(locust_dir):
     if os.path.isdir(locust_dir):

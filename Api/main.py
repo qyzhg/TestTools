@@ -16,51 +16,56 @@
 import argparse
 import os
 import sys
+
 sys.path.append(os.path.abspath('../'))
-from Api.public.menu import menu
+
 from Api.settings import *
-from Api.public.make_project import make_locust_dir,make_test_api_dir,make_case_dir
+
+from Api.public.menu import menu
+from Api.public.start import start_project
+from Api.public.is_replace import is_replace
+from Api.public.create_script import create_script
 
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
 parser.add_argument('--n', type=str,help='接口名，例如：login，输入@auto可以根据接口地址自动生成接口名')
 parser.add_argument('--u', type=str,help='接口地址，例如：a/login，配置好settings中的HOST后，可以直接输入完整地址')
 parser.add_argument('--m', type=str,help='请求方式，只能输入三种请求方式：GET，POST/data，POST/json')
-parser.add_argument('-start',type=str,help='生成项目目录')
+parser.add_argument('-start',type=str,help='生成项目目录，使用方式为 -start 项目名')
+parser.add_argument('-cs',type=str,help='creat_script 根据yaml测试用例生成测试脚本，使用方式为 -cs 项目名')
 
 args = parser.parse_args()
 
+#创建项目目录
 start = args.start
 if start:
-    if not os.path.isdir(PARENT_CASE_DIR):
-        os.makedirs(PARENT_CASE_DIR)
-    if not os.path.isdir(PARENT_TEST_API_DIR):
-        os.makedirs(PARENT_TEST_API_DIR)
-    if not os.path.isdir(PARENT_LOCUSTFILE_DIR):
-        os.makedirs(PARENT_LOCUSTFILE_DIR)
+    start_project(start)
 
-    start = start.upper()
-    locust_dir,test_api_dir,case_dir = (os.path.join(PARENT_LOCUSTFILE_DIR,start)),(os.path.join(PARENT_TEST_API_DIR,start)),(os.path.join(PARENT_CASE_DIR,start))
-    make_locust_dir(locust_dir)
-    make_test_api_dir(test_api_dir)
-    make_case_dir(case_dir)
+
+#通过测试用例生成脚本
+cs = args.cs
+if cs:
+    create_script(cs)
+
+
+if start or cs:
     sys.exit(0)
 
 
-
-
-#获取参数
-#处理带有前缀的URL
 url = args.u
 if url == None:
     print('请带参数运行此工具，需要帮助请使用--help命令')
     sys.exit(0)
 if HOST in url:
     url = url.split(HOST)[1]
+
+
 meth = args.m
 if meth == None:
     print('请带参数运行此工具，需要帮助请使用--help命令')
     sys.exit(0)
+
+
 name = args.n
 if name == None:
     print('请带参数运行此工具，需要帮助请使用--help命令')
@@ -75,19 +80,10 @@ if None in [name,url,meth]:
     print('缺少必要的参数，请使用--help参数查看帮助')
     sys.exit(0)
 
-#测试用例已存在
+
+#有存在的测试用例的处理
 if os.path.isfile(case_path):
-    print('目录中已存在同名测试用例文件：{case_path},请选择是否覆盖??'.format(case_path = case_path))
-    while True:
-        is_replace = input('Y:覆盖(默认) \nN:取消操作\n').upper()
-        if is_replace == 'Y' or is_replace == 'YES' or is_replace == '':
-            menu(name=name,url=url,meth=meth,case_path=case_path)
-            break
-        elif is_replace == 'N' or is_replace == 'NO':
-            print('已取消操作！')
-            sys.exit(0)
-        else:
-            print('输入有误，请重新选择')
+    is_replace(case_path=case_path,name=name,url=url,meth=meth)
 #测试用例不存在
 else:
     menu(name=name, url=url, meth=meth, case_path=case_path)
