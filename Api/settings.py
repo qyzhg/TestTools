@@ -15,7 +15,7 @@
 
 import os
 
-#此处配置项目名称
+#此处配置项目名称.
 PROJECT_NAME = 'TEST_a'.upper()
 
 #此处配置项目路径
