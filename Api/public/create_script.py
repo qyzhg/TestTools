@@ -14,19 +14,26 @@
 import os
 import sys
 
-from Api.getyaml.json_to_yaml import make_locustfile
+from Api.getyaml.json_to_yaml import make_locustfile,make_apifile
 from Api.settings import PROJECT_NAME,CASE_DIR
 
 def create_script(project_name):
     project_name = project_name.upper()
-    try:
-        case_list = os.listdir(CASE_DIR)
-    except FileNotFoundError:
-        print('项目还没有创建！请使用 -start 命令创建项目，--help参考帮助')
-        sys.exit(0)
-
-    yaml_list = list(filter(lambda x : x[-5:].upper()=='.YAML',case_list))
+    # try:
+    #     case_list = os.listdir(CASE_DIR)
+    # except FileNotFoundError:
+    #     print('项目还没有创建！请使用 -start 命令创建项目，--help参考帮助')
+    #     sys.exit(0)
+    #
+    # yaml_list = list(filter(lambda x : x[-5:].upper()=='.YAML',case_list))
     if project_name == PROJECT_NAME:
+        try:
+            case_list = os.listdir(CASE_DIR)
+        except FileNotFoundError:
+            print('项目还没有创建！请使用 -start 命令创建项目，--help参考帮助')
+            sys.exit(0)
+
+        yaml_list = list(filter(lambda x: x[-5:].upper() == '.YAML', case_list))
 
         if yaml_list:
             #处理文件后缀名
@@ -35,8 +42,34 @@ def create_script(project_name):
             for _ in yaml_list:
                 new_list.append(cut_list(_))
 
-            r = map(make_locustfile,new_list)
-            list(r)
+            while True:
+                print('请选择生成脚本的类型：\n'
+                      '【1】性能脚本和接口脚本同时生成（默认）\n'
+                      '【2】仅生成性能脚本\n'
+                      '【3】仅生成接口脚本\n'
+                      '【q】quit 退出\n'
+                      )
+                a = input('请输入功能编号：\n')
+
+                if a == '1' or a == '':
+                    list(map(make_locustfile,new_list))
+                    list(map(make_apifile,new_list))
+                    break
+
+                elif a == '2':
+                    list(map(make_locustfile, new_list))
+                    break
+
+                elif a == '3':
+                    list(map(make_apifile,new_list))
+                    break
+
+                elif a.upper() == 'Q' or a == 'QUIT':
+                    sys.exit(0)
+
+                else:
+                    print('选择有误，请重新选择！')
+
 
         else:
             print('测试用例文件夹没有测试用例，请检查{case_dir}'.format(case_dir = CASE_DIR))
