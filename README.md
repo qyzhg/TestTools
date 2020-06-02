@@ -33,7 +33,7 @@ python main.py -start hengsuan504
 >>> json_to_yaml.py<br>
 
 ##### 2.在Api目录下使用命令 python --u 接口地址，也可以使用完整的URL --n 接口名，也可以直接输入@auto关键字自动生成接口名，推荐自动生成 --m 请求方式，一共识别三种请求方式：POST/json，POST/data，GET。例如：
-```shell script
+```
 python --u http://10.102.111.117:8093/HCLCNNC/a/ --n @auto --m POST/data
 ```
 ##### 3.输入完这条命令后，如果此接口名存在在测试用例文件夹中，系统会提示是否覆盖原有的文件，如果没有同名文件，则会弹出选择窗口，根据自己需求可以选择是否将代码追加到脚本中。
