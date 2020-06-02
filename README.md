@@ -9,14 +9,14 @@ python main.py -start hengsuan504
 ```
 ##### 3.此时，系统会生成几个新的目录，用于管理你的项目，目录结构如下：
 >Api
->>locust_dir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<<<<<用于存放所有项目的性能测试脚本的目录<br>
->>>HENGSUAN504 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<<<<<新建的项目文件夹，项目的性能测试脚本就会存在这里<br>
+>>locust_dir      <<<<<用于存放所有项目的性能测试脚本的目录<br>
+>>>HENGSUAN504      <<<<<新建的项目文件夹，项目的性能测试脚本就会存在这里<br>
 
->>test_api_dir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<<<<<用于存放所有项目的接口测试脚本的目录<br>
->>>HENGSUAN504 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<<<<<新建的项目文件夹，项目的接口测试脚本就会存在这里<br>
+>>test_api_dir      <<<<<用于存放所有项目的接口测试脚本的目录<br>
+>>>HENGSUAN504      <<<<<新建的项目文件夹，项目的接口测试脚本就会存在这里<br>
 
->>case_dir &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<<<<<用于存放所有项目的测试用例的目录<br>
->>>HENGSUAN504 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<<<<<新建的项目文件夹，项目的测试用例就会存在这里
+>>case_dir      <<<<<用于存放所有项目的测试用例的目录<br>
+>>>HENGSUAN504      <<<<<新建的项目文件夹，项目的测试用例就会存在这里
 
 ### **`配置项目：`**
 ##### 1.进入根目录下settings.py文件中
@@ -29,7 +29,7 @@ python main.py -start hengsuan504
 >> getyaml
 >>> __ init __.py<br>
 >>> data_to_json.py<br>
->>> **`json`**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<<<<<在这里<br>
+>>> **`json`**               <<<<<在这里<br>
 >>> json_to_yaml.py<br>
 
 ##### 2.在Api目录下使用命令 python --u 接口地址，也可以使用完整的URL --n 接口名，也可以直接输入@auto关键字自动生成接口名，推荐自动生成 --m 请求方式，一共识别三种请求方式：POST/json，POST/data，GET。例如：
