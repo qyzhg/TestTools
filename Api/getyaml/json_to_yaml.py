@@ -26,6 +26,7 @@ sys.path.append(os.path.abspath('../..'))
 from Api.settings import *
 from Api.public.WriteTestCase import WriteTestCase
 from Api.getyaml.data_to_json import DataToJson
+t = time.ctime()
 
 
 def json_to_yaml(name,url,meth,case_path,remark):
@@ -72,22 +73,27 @@ def json_to_yaml(name,url,meth,case_path,remark):
         print('项目目录不存在，请检查项目目录和settings文件中的PROJECT_NAME配置!')
         sys.exit(0)
 
-def make_locustfile(name):
+
+def make_locustfile(name,remark = ''):
     WriteTestCase(filepath = LOCUSTFILE_FILE,
+
                   linenum = -22,
-                  content = "\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
+
+                  content = f"\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
                           "@task(1)\n    "
-                          "def __{name}(self):\n        "
-                          "self.Api.api('{name}')\n\n".format(name=name,t = time.ctime())
+                          f"def __{name}(self):\n        "
+                          f"#{remark}\n"
+                          f"        self.Api.api('{name}')\n\n"
                   )
     print('该方法已生成到性能测试文件下')
 
 
-def make_apifile(name):
+def make_apifile(name,remark = ''):
     WriteTestCase(filepath=TEST_API_FILE,
                   linenum=-1,
-                  content="\n#{t}该代码由工具自动生成，请检查后使用！"
-                          "\n    def test_{name}(self):\n"
-                          "        r = self.api('{name}')\n".format(name = name,t = time.ctime())
+                  content=f"\n#{t}该代码由工具自动生成，请检查后使用！"
+                          f"\n    def test_{name}(self):\n"
+                          f"        #{remark}\n"
+                          f"        r = self.api('{name}')\n"
                   )
     print('该方法已生成到接口测试文件下')

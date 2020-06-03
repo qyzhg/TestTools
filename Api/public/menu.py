@@ -35,8 +35,8 @@ def menu(name,url,meth,case_path,remark):
                          url=url,
                          meth=meth,
                          case_path=case_path)
-            make_locustfile(name=name)
-            make_apifile(name = name)
+            make_locustfile(name=name,remark=remark)
+            make_apifile(name = name,remark = remark)
             break
 
         elif is_mk_code == '2':
@@ -45,7 +45,7 @@ def menu(name,url,meth,case_path,remark):
                          url=url,
                          meth=meth,
                          case_path=case_path)
-            make_locustfile(name=name)
+            make_locustfile(name=name,remark = remark)
             break
 
         elif is_mk_code == '3':
@@ -54,7 +54,7 @@ def menu(name,url,meth,case_path,remark):
                          url=url,
                          meth=meth,
                          case_path=case_path)
-            make_apifile(name=name)
+            make_apifile(name=name,remark=remark)
             break
 
         elif is_mk_code == '4':
