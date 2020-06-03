@@ -23,6 +23,7 @@ def is_replace(case_path,name,url,meth):
             break
         elif is_replace == 'N' or is_replace == 'NO':
             print('已取消操作！')
+            break
             # sys.exit(0)
         else:
             print('输入有误，请重新选择')
