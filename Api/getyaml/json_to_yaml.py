@@ -28,7 +28,7 @@ from Api.public.WriteTestCase import WriteTestCase
 from Api.getyaml.data_to_json import DataToJson
 
 
-def json_to_yaml(name,url,meth,case_path):
+def json_to_yaml(name,url,meth,case_path,remark):
     '''
     将json文件中的文件转换生成yaml格式的测试用例
     :param name: 接口名
@@ -45,6 +45,7 @@ def json_to_yaml(name,url,meth,case_path):
         try:
             dict_f = ast.literal_eval(str(f.read()))
             dict_var = {
+                        'remark':remark,
                         'name':name,
                         'url':url,
                         'meth':meth,
