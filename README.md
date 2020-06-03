@@ -20,7 +20,7 @@ python main.py -start hengsuan504
 
 ### **`配置项目：`**
 ##### 1.进入根目录下settings.py文件中
-##### 2.编辑 PROJECT_NAME 变量为项目名，例如上一个例子里的新建的项目叫hengsuan504，我现在要使用他，就将他改为**PROJECT_NAME = 'hengsuan504'**
+##### 2.编辑 PROJECT 变量为项目名，例如上一个例子里的新建的项目叫hengsuan504，我现在要使用他，就将他改为**PROJECT = 'hengsuan504'**
 ##### 3.编辑 HOST 变量为项目地址，例如：HOST = 'http://10.102.111.117:8093/HCLCNNC/a/'
 
 ### **`生成测试脚本：`**
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 ##### 最新版的locust的使用语法变动较大，现正在探索中，基本用法脚本已经实现，可以直接在编辑器中使用右键 run 执行，然后在浏览器中输入127.0.0.1:8089进行性能测试
 
 ### **`根据测试用例yaml文件生成测试脚本：`**
-##### 1.先在settings文件中将PROJECT_NAME变量改为需要生成的项目的名称
+##### 1.先在settings文件中将PROJECT变量改为需要生成的项目的名称
 ##### 2.CD到Api目录下，使用命令 python main.py -cs 项目名称，例如：
 ```
 python main.py -cs hengsuan504

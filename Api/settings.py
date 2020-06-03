@@ -16,10 +16,12 @@
 import os
 
 #此处配置项目名称.
-PROJECT_NAME = 'TEST_a'.upper()
+PROJECE = 'inspection'
 
 #此处配置项目路径
 HOST = 'http://10.102.111.117:8093/HCLCNNC/a/'
+
+PROJECT_NAME = PROJECE.upper()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
