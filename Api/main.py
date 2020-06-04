@@ -70,7 +70,7 @@ name = args.n
 if name == None:
     print('请带参数运行此工具，需要帮助请使用--help命令')
     sys.exit(0)
-if name == '@auto':
+if name.upper() == '%AUTO':
     name = (url + '_' + meth.upper()).replace('/','_')
 #yaml输出路径
 case_path = os.path.join(CASE_DIR,name) + '.yaml'
