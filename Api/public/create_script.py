@@ -14,8 +14,10 @@
 
 import os
 import sys
-
-import yaml
+try:
+    import yaml
+except ModuleNotFoundError:
+    os.system('pip install pyyaml')
 
 from Api.getyaml.json_to_yaml import make_locustfile,make_apifile
 from Api.settings import PROJECT_NAME, CASE_DIR, HOST

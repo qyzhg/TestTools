@@ -17,10 +17,9 @@ import argparse
 import os
 import sys
 
-sys.path.append(os.path.abspath('../'))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from Api.settings import *
-
 from Api.public.menu import menu
 from Api.public.start import start_project
 from Api.public.is_replace import is_replace
