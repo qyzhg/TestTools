@@ -35,8 +35,12 @@ class Api(object):
         else:
             file_name = case_name
         # print(file_name)
-        with open(os.path.join(CASE_DIR, file_name), 'r',encoding='utf-8') as f:
-            y = yaml.load(f.read(), Loader=yaml.FullLoader)
+        try:
+            with open(os.path.join(CASE_DIR, file_name), 'r', encoding='utf-8') as f:
+                y = yaml.load(f.read(), Loader=yaml.FullLoader)
+        except FileNotFoundError:
+            print(f'未在{CASE_DIR}找到文件{file_name}，请检查配置文件中的项目名和case文件夹中的测试用例')
+            return
         # 获取yaml文件的参数
         url = HOST + y.get('url')  # 请求地址
         params = y.get('params')  # 请求参数
