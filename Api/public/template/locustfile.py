@@ -6,7 +6,11 @@
 
 
 import os,sys
-sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "../../..")))
+sys.path.append(os.path.dirname
+                (os.path.dirname
+                 (os.path.dirname
+                  (os.path.dirname
+                   (os.path.abspath(__file__))))))
 from Api.public.API import Api
 
 
@@ -47,7 +51,7 @@ env.create_web_ui("127.0.0.1", 8089)
 # env.runner.start(1, hatch_rate=10)
 
 # 定时器（秒）
-gevent.spawn_later(15, lambda: env.runner.quit())
+gevent.spawn_later(3600, lambda: env.runner.quit())
 
 # 集合点
 env.runner.greenlet.join()
