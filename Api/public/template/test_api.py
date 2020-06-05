@@ -16,7 +16,11 @@ except ImportError:
     print('发现缺少的依赖库，正在尝试安装，如果安装失败，请使用pip install requests命令自行安装')
     os.system('pip install requests')
     import requests
-sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "../../..")))
+sys.path.append(os.path.dirname
+                (os.path.dirname
+                 (os.path.dirname
+                  (os.path.dirname
+                   (os.path.abspath(__file__))))))
 from Api.public.API import Api
 
 class test_api(unittest.TestCase, Api):
