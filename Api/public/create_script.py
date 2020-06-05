@@ -85,7 +85,7 @@ def create_script(project_name):
             print('测试用例文件夹没有测试用例，请检查{case_dir}'.format(case_dir = CASE_DIR))
 
     else:
-        print('当前输入项目名称与配置文件中的项目名称不符，请检查Api>settings.py文件中的PROJECT_NAME参数')
+        print('当前输入项目名称与配置文件中的项目名称不符，请检查Api>settings.py文件中的PROJECT参数')
 
 
 def get_remark(file_name):
