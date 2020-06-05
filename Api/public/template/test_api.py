@@ -8,6 +8,8 @@
 import sys
 import unittest
 import os
+import warnings
+
 try:
     import requests
 except ImportError:
@@ -19,6 +21,7 @@ from Api.public.API import Api
 
 class test_api(unittest.TestCase, Api):
     def setUp(self) -> None:
+        warnings.simplefilter('ignore',ResourceWarning)
         self.s = requests.Session()
         # self.login()
 
