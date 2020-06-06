@@ -27,12 +27,12 @@ from Api.public.create_script import create_script
 
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
-parser.add_argument('--n', type=str,help='接口名，例如：login，输入@auto可以根据接口地址自动生成接口名')
+parser.add_argument('--n', type=str,help='接口名，例如：login，输入%auto可以根据接口地址自动生成接口名')
 parser.add_argument('--u', type=str,help='接口地址，例如：a/login，配置好settings中的HOST后，可以直接输入完整地址')
 parser.add_argument('--m', type=str,help='请求方式，只能输入三种请求方式：GET，POST/data，POST/json')
 parser.add_argument('--remark', type=str,help='备注，说明')
 parser.add_argument('-start',type=str,help='生成项目目录，使用方式为 -start 项目名')
-parser.add_argument('-cs',type=str,help='creat_script 根据yaml测试用例生成测试脚本，使用方式为 -cs 项目名')
+parser.add_argument('-cs',type=str,help='create_script 根据yaml测试用例生成测试脚本，使用方式为 -cs 项目名')
 
 args = parser.parse_args()
 
