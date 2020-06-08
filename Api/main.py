@@ -29,7 +29,7 @@ from Api.public.menu import menu
 from Api.public.is_replace import is_replace
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
-parser.add_argument('--n', '--name', type=str, help='接口名，例如：login，输入%auto可以根据接口地址自动生成接口名')
+parser.add_argument('--n', '--name', type=str, help='接口名，例如：login，输入%%auto可以根据接口地址自动生成接口名')
 parser.add_argument('--u', '--url', type=str, help='接口地址，例如：a/login，配置好settings中的HOST后，可以直接输入完整地址')
 parser.add_argument('--m', '--method', type=str, help='请求方式，只能输入三种请求方式：GET，POST/data，POST/json')
 parser.add_argument('--r', '--remark', type=str, help='备注，说明')
