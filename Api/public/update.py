@@ -16,7 +16,7 @@ import os
 from Api import settings
 
 
-def Update(update: str):
+def Update():
     # if update.upper() == 'TOOLS':
     print('更新工具有丢失数据的风险！请将case妥善备份！！请将case备份后继续！！！\nY:继续（默认）\nN:取消')
     while True:

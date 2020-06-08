@@ -57,3 +57,9 @@ if __name__ == '__main__':
 python main.py -cs hengsuan504
 ```
 ##### 3.根据提示即可生成测试脚本
+
+### **`更新工具主程序：`**
+使用命令
+```
+python main.py -update
+```
