@@ -33,3 +33,4 @@ def Update(update:str):
                     print('输入错误，请重新输入')
             except SyntaxError:
                 print('请更新python版本到3.8以上在重试')
+                return
