@@ -16,23 +16,33 @@ import os
 import sys
 from shutil import copyfile
 
-from Api.settings import PARENT_LOCUSTFILE_DIR, PARENT_CASE_DIR, PARENT_TEST_API_DIR, TEMPLATE_DIR
+from Api.settings import PARENT_LOCUSTFILE_DIR, PARENT_CASE_DIR, PARENT_TEST_API_DIR, PARENT_REPORT_DIR ,TEMPLATE_DIR
 
 
 def start_project(startname):
     if not os.path.isdir(PARENT_CASE_DIR):
+        #创建测试用例目录
         os.makedirs(PARENT_CASE_DIR)
     if not os.path.isdir(PARENT_TEST_API_DIR):
+        #创建接口测试脚本目录
         os.makedirs(PARENT_TEST_API_DIR)
     if not os.path.isdir(PARENT_LOCUSTFILE_DIR):
+        #创建性能测试脚本目录
         os.makedirs(PARENT_LOCUSTFILE_DIR)
+    if not os.path.isdir(PARENT_REPORT_DIR):
+        #创建测试报告目录
+        os.makedirs(PARENT_REPORT_DIR)
 
     start = startname.upper()
-    locust_dir, test_api_dir, case_dir = (os.path.join(PARENT_LOCUSTFILE_DIR, start)), (
-        os.path.join(PARENT_TEST_API_DIR, start)), (os.path.join(PARENT_CASE_DIR, start))
+    locust_dir, test_api_dir, case_dir ,report_dir= (
+                                                        os.path.join(PARENT_LOCUSTFILE_DIR, start)), (
+                                                        os.path.join(PARENT_TEST_API_DIR, 'test_'+start)), (
+                                                        os.path.join(PARENT_CASE_DIR, start)),(
+                                                        os.path.join(PARENT_REPORT_DIR,start))
     make_locust_dir(locust_dir)
     make_test_api_dir(test_api_dir)
     make_case_dir(case_dir)
+    make_report_dir(report_dir)
     sys.exit(0)
 
 
@@ -64,6 +74,14 @@ def make_case_dir(case_dir):
         os.makedirs(case_dir)
         print('新建case_dir目录成功!\n{case_dir}\n'.format(
             case_dir=case_dir))
+
+def make_report_dir(report_dir):
+    if os.path.isdir(report_dir):
+        print(f'新建report_dir项目失败！\n{report_dir}目录已存在，请检查路径！')
+    else:
+        # 新建report_dir项目目录
+        os.makedirs(report_dir)
+        print(f'新建report_dir目录成功!\n{report_dir}\n')
 
 
 def make_locust_files(locust_dir):

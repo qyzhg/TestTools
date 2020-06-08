@@ -84,11 +84,13 @@ def make_locustfile(name, remark=''):
 
                   content=f"\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
                           "@task(1)\n    "
-                          f"def __{name}(self):\n        "
-                          f"#{remark}\n"
+                          f"def __{name}(self):\n"
+                          f"        '''\n"
+                          f"        {remark}\n"
+                          f"        '''\n"
                           f"        self.Api.api('{name}')\n\n"
                   )
-    print('该方法已生成到性能测试文件下')
+    print(F'该方法已生成到性能测试文件下:{LOCUSTFILE_FILE}')
 
 
 def make_apifile(name, remark=''):
@@ -96,7 +98,9 @@ def make_apifile(name, remark=''):
                   linenum=-1,
                   content=f"\n#{t}该代码由工具自动生成，请检查后使用！"
                           f"\n    def test_{name}(self):\n"
-                          f"        #{remark}\n"
+                          f"        '''\n"
+                          f"        {remark}\n"
+                          f"        '''\n"
                           f"        r = self.api('{name}')\n"
                   )
-    print('该方法已生成到接口测试文件下')
+    print(F'该方法已生成到接口测试文件下:{TEST_API_FILE}')
