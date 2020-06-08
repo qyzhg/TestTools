@@ -35,6 +35,7 @@ parser.add_argument('--remark', '--r', type=str, help='备注，说明')
 parser.add_argument('-start', type=str, help='生成项目目录，使用方式为 -start 项目名')
 parser.add_argument('-cs', type=str, help='create_script 根据yaml测试用例生成测试脚本，使用方式为 -cs 项目名')
 parser.add_argument('-runtest', type=str, help='执行接口测试脚本并生成报告和发送邮件，使用方式为 -runtest 项目名')
+parser.add_argument('-runlocust', type=str, help='运行性能测试服务，使用方式为 -runlocust 项目名')
 parser.add_argument('-update', action='store_true', default=False, help='更新工具主程序，使用方式为 python main.py -update')
 
 args = parser.parse_args()
@@ -58,8 +59,15 @@ if cs:
 #执行测试脚本
 runtest = args.runtest
 if runtest:
-    from Api.public.RunTest import run
-    run(runtest)
+    from Api.public.RunTest import runAPITEST
+    runAPITEST(runtest)
+    sys.exit(0)
+
+#运行性能测试服务
+runlocust = args.runlocust
+if runlocust:
+    from Api.public.RunTest import runLOCUST
+    runLOCUST(runlocust)
     sys.exit(0)
 
 # 更新工具

@@ -17,13 +17,21 @@ import time
 import unittest
 from Api.public import HTMLTestReportCN
 from Api.public.send_mail import Email
-from Api.settings import REPORT_DIR,TEST_API_DIR,EMAIL_ADDRESS,PROJECT_NAME
+from Api.settings import REPORT_DIR,TEST_API_DIR,EMAIL_ADDRESS,PROJECT_NAME,LOCUSTFILE_FILE
 
-def run(a:str):
+def runAPITEST(a:str):
     if a.upper() == PROJECT_NAME:
         runtest()
     else:
         print('输入项目名与配置项目名不符，请检查输入的项目名和settings文件')
+
+def runLOCUST(a:str):
+    if a.upper() == PROJECT_NAME:
+        print('压力服务已启动，请访问 127.0.0.1:8089 进行测试')
+        os.system(f'python {LOCUSTFILE_FILE}')
+    else:
+        print('输入项目名与配置项目名不符，请检查输入的项目名和settings文件')
+
 
 def runtest():
     '''

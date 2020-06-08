@@ -64,6 +64,12 @@ python main.py -cs hengsuan504
 python main.py -runtest 项目名
 ```
 
+### **`运行压力服务：`**
+使用命令
+```
+python main.py -runlocust 项目名
+```
+
 ### **`更新工具主程序：`**
 使用命令
 ```
