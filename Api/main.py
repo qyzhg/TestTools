@@ -16,13 +16,10 @@ import argparse
 import os
 import sys
 
+# 版本检查提醒
 Py_version = sys.version_info
-if (Py_version.major) < 3:
-    print('此工具不兼容python2，请将python版本升级！')
-    sys.exit(0)
-else:
-    if (Py_version.minor) < 8:
-        print('检测到您的python环境低于3.8，请及时将python版本升级到3.8以上，否则一些功能无法正常使用！')
+if Py_version.major > 3 and Py_version.minor < 8:
+    print('检测到您的python环境低于3.8，请及时将python版本升级到3.8以上，否则一些功能无法正常使用！')
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -38,7 +35,7 @@ parser.add_argument('--m', type=str, help='请求方式，只能输入三种请�
 parser.add_argument('--remark', type=str, help='备注，说明')
 parser.add_argument('-start', type=str, help='生成项目目录，使用方式为 -start 项目名')
 parser.add_argument('-cs', type=str, help='create_script 根据yaml测试用例生成测试脚本，使用方式为 -cs 项目名')
-parser.add_argument('-update', type=str, help='更新工具主程序，使用方式为 -update tools')
+parser.add_argument('update', type=str, help='更新工具主程序，使用方式为 python main.py update')
 
 args = parser.parse_args()
 
