@@ -39,7 +39,7 @@ def runtest():
     '''
     #生成报告
     fileName=os.path.join(REPORT_DIR,getNowTime()+'_reportCN.html')
-    fp = open(fileName,'wb',encoding='utf-8')
+    fp = open(fileName,'wb')
     runner = HTMLTestReportCN.HTMLTestRunner(
         stream=fp,
         title='自动化测试报告',
