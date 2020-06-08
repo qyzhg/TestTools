@@ -12,36 +12,34 @@
 @Time    :   2020/5/28 8:50 上午
 '''
 
-
 import os
 
-#此处配置项目名称.
+# 此处配置项目名称.
 PROJECE = 'TEST_LOCUST'
 
-#此处配置项目路径
+# 此处配置项目路径
 HOST = 'http://10.102.111.117:8093/HCLCNNC/a/'
 
 PROJECT_NAME = PROJECE.upper()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-PARENT_CASE_DIR = os.path.join(BASE_DIR,'case_dir')
+PARENT_CASE_DIR = os.path.join(BASE_DIR, 'case_dir')
 
-CASE_DIR = os.path.join(PARENT_CASE_DIR,PROJECT_NAME)
+CASE_DIR = os.path.join(PARENT_CASE_DIR, PROJECT_NAME)
 
 PARENT_LOCUSTFILE_DIR = os.path.join(BASE_DIR, 'locust_dir')
 
 LOCUSTFILE_DIR = os.path.join(PARENT_LOCUSTFILE_DIR, PROJECT_NAME)
 
-LOCUSTFILE_FILE = os.path.join(LOCUSTFILE_DIR,'locustfile.py')
+LOCUSTFILE_FILE = os.path.join(LOCUSTFILE_DIR, 'locustfile.py')
 
-PARENT_TEST_API_DIR = os.path.join(BASE_DIR,'test_api_dir')
+PARENT_TEST_API_DIR = os.path.join(BASE_DIR, 'test_api_dir')
 
-TEST_API_DIR = os.path.join(PARENT_TEST_API_DIR,PROJECT_NAME)
+TEST_API_DIR = os.path.join(PARENT_TEST_API_DIR, PROJECT_NAME)
 
-TEST_API_FILE = os.path.join(TEST_API_DIR,'test_api.py')
+TEST_API_FILE = os.path.join(TEST_API_DIR, 'test_api.py')
 
-JSON_FILE = os.path.join(BASE_DIR,'getyaml','json')
+JSON_FILE = os.path.join(BASE_DIR, 'getyaml', 'json')
 
-TEMPLATE_DIR = os.path.join(BASE_DIR,'public','template')
-
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'public', 'template')

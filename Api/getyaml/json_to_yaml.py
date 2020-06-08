@@ -16,20 +16,23 @@ try:
 except ImportError:
     print('发现缺少的依赖库，工具正在尝试安装，如安装失败，请使用pip install ruamel.yaml命令自行安装')
     import os
+
     os.system('pip install ruamel.yaml')
     import ruamel.yaml
 import ast
 import os
 import sys
 import time
+
 sys.path.append(os.path.abspath('../..'))
 from Api.settings import *
 from Api.public.WriteTestCase import WriteTestCase
 from Api.getyaml.data_to_json import DataToJson
+
 t = time.ctime()
 
 
-def json_to_yaml(name,url,meth,case_path,remark):
+def json_to_yaml(name, url, meth, case_path, remark):
     '''
     将json文件中的文件转换生成yaml格式的测试用例
     :param name: 接口名
@@ -46,13 +49,13 @@ def json_to_yaml(name,url,meth,case_path,remark):
         try:
             dict_f = ast.literal_eval(str(f.read()))
             dict_var = {
-                        'remark':remark,
-                        'name':name,
-                        'url':url,
-                        'meth':meth,
-                        'params':
-                            dict_f
-                        }
+                'remark': remark,
+                'name': name,
+                'url': url,
+                'meth': meth,
+                'params':
+                    dict_f
+            }
         except:
             DataToJson()
             with open(JSON_FILE, 'r', encoding='utf-8') as f:
@@ -66,20 +69,20 @@ def json_to_yaml(name,url,meth,case_path,remark):
                 }
 
     try:
-        with open(case_path,'w+',encoding='utf-8') as case_file:
-            print(ruamel.yaml.dump(dict_var,Dumper=ruamel.yaml.RoundTripDumper,allow_unicode=True),file=case_file)
-            print('已生成接口配置文件：'+case_path)
+        with open(case_path, 'w+', encoding='utf-8') as case_file:
+            print(ruamel.yaml.dump(dict_var, Dumper=ruamel.yaml.RoundTripDumper, allow_unicode=True), file=case_file)
+            print('已生成接口配置文件：' + case_path)
     except FileNotFoundError:
         print('项目目录不存在，请检查项目目录和settings文件中的PROJECT_NAME配置!')
         sys.exit(0)
 
 
-def make_locustfile(name,remark = ''):
-    WriteTestCase(filepath = LOCUSTFILE_FILE,
+def make_locustfile(name, remark=''):
+    WriteTestCase(filepath=LOCUSTFILE_FILE,
 
-                  linenum = -22,
+                  linenum=-22,
 
-                  content = f"\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
+                  content=f"\n#{t}:该代码由工具自动生成，请检查后使用！\n    "
                           "@task(1)\n    "
                           f"def __{name}(self):\n        "
                           f"#{remark}\n"
@@ -88,7 +91,7 @@ def make_locustfile(name,remark = ''):
     print('该方法已生成到性能测试文件下')
 
 
-def make_apifile(name,remark = ''):
+def make_apifile(name, remark=''):
     WriteTestCase(filepath=TEST_API_FILE,
                   linenum=-1,
                   content=f"\n#{t}该代码由工具自动生成，请检查后使用！"

@@ -14,12 +14,13 @@
 
 import os
 import sys
+
 try:
     import yaml
 except ModuleNotFoundError:
     os.system('pip install pyyaml')
 
-from Api.getyaml.json_to_yaml import make_locustfile,make_apifile
+from Api.getyaml.json_to_yaml import make_locustfile, make_apifile
 from Api.settings import PROJECT_NAME, CASE_DIR, HOST
 
 
@@ -36,8 +37,8 @@ def create_script(project_name):
         yaml_list = list(filter(lambda x: x[-5:].upper() == '.YAML', case_list))
 
         if yaml_list:
-            #处理文件后缀名
-            cut_list = lambda x : x.upper().split('.YAML')[0]
+            # 处理文件后缀名
+            cut_list = lambda x: x.upper().split('.YAML')[0]
 
             new_list = list()
             for _ in yaml_list:
@@ -47,10 +48,6 @@ def create_script(project_name):
             # d = dict()
             # for _ in new_list:
             #     d[_] = (get_remark(_))
-
-
-
-
 
             while True:
                 print('请选择生成脚本的类型：\n'
@@ -62,8 +59,8 @@ def create_script(project_name):
                 a = input('请输入功能编号：\n')
 
                 if a == '1' or a == '':
-                    list(map(__make_locustfile,new_list))
-                    list(map(__make_apifile,new_list))
+                    list(map(__make_locustfile, new_list))
+                    list(map(__make_apifile, new_list))
                     break
 
                 elif a == '2':
@@ -71,7 +68,7 @@ def create_script(project_name):
                     break
 
                 elif a == '3':
-                    list(map(make_apifile,new_list))
+                    list(map(make_apifile, new_list))
                     break
 
                 elif a.upper() == 'Q' or a == 'QUIT':
@@ -82,7 +79,7 @@ def create_script(project_name):
 
 
         else:
-            print('测试用例文件夹没有测试用例，请检查{case_dir}'.format(case_dir = CASE_DIR))
+            print('测试用例文件夹没有测试用例，请检查{case_dir}'.format(case_dir=CASE_DIR))
 
     else:
         print('当前输入项目名称与配置文件中的项目名称不符，请检查Api>settings.py文件中的PROJECT参数')
@@ -99,6 +96,7 @@ def get_remark(file_name):
     remark = y.get('remark')
     return remark
 
+
 def __make_locustfile(name):
     '''
     烂方法，临时救火用后期优化进map
@@ -106,7 +104,8 @@ def __make_locustfile(name):
     :return:
     '''
     remark = get_remark(name)
-    make_locustfile(name=name,remark=remark)
+    make_locustfile(name=name, remark=remark)
+
 
 def __make_apifile(name):
     '''
@@ -115,7 +114,7 @@ def __make_apifile(name):
     :return:
     '''
     remark = get_remark(name)
-    make_apifile(name=name,remark = remark)
+    make_apifile(name=name, remark=remark)
 
 
 if __name__ == '__main__':

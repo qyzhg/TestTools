@@ -16,18 +16,19 @@ try:
 except ImportError:
     print('发现缺少的依赖库，正在尝试安装，如果安装失败，请使用pip install pyyaml命令自行安装')
     import os
+
     os.system('pip install pyyaml')
     import yaml
 from Api.settings import *
 
+
 class Api(object):
-    def __init__(self,session):
+    def __init__(self, session):
         '''
         初始化方法
         :param session: requests.Session()
         '''
         self.s = session
-
 
     def api(self, case_name):
         if case_name[-5:].upper() != '.YAML':
@@ -47,26 +48,25 @@ class Api(object):
         name = y.get('name')  # 接口名
         meth = y.get('meth').upper()  # 获取请求方式并强转为纯大写
         if 'DATA' in meth:
-            r = self.post_data(url = url,params = params)
+            r = self.post_data(url=url, params=params)
             return r
         elif 'JSON' in meth:
-            r = self.post_json(url = url,params = params)
+            r = self.post_json(url=url, params=params)
             return r
         elif 'GET' in meth:
-            r = self.get_params(url = url,params = params)
+            r = self.get_params(url=url, params=params)
             return r
         else:
-            print('{name}接口meth参数配置有误'.format(name = name))
+            print('{name}接口meth参数配置有误'.format(name=name))
 
-
-    def post_data(self,url,params):
-        r = self.s.post(url = url,data = params)
+    def post_data(self, url, params):
+        r = self.s.post(url=url, data=params)
         return r
 
-    def post_json(self,url,params):
-        r = self.s.post(url = url,json = params)
+    def post_json(self, url, params):
+        r = self.s.post(url=url, json=params)
         return r
 
-    def get_params(self,url,params):
-        r = self.s.get(url = url,params = params)
+    def get_params(self, url, params):
+        r = self.s.get(url=url, params=params)
         return r

@@ -14,10 +14,10 @@
 
 
 def WriteTestCase(
-                  filepath:str,
-                  linenum:int,
-                  content:str
-                  ):
+        filepath: str,
+        linenum: int,
+        content: str
+):
     '''
     向代码中追加方法
     :param name: 方法名
@@ -26,13 +26,13 @@ def WriteTestCase(
     :param content: 写入内容
     :return:
     '''
-    lines=[]
-    with open(filepath,'r',encoding='utf-8') as lf:
+    lines = []
+    with open(filepath, 'r', encoding='utf-8') as lf:
         for line in lf:
             lines.append(line)
     # print(lines)
-    lines.insert(linenum,content)
+    lines.insert(linenum, content)
     s = ''.join(lines)
 
-    with open(filepath,'w+',encoding='utf-8') as lf:
+    with open(filepath, 'w+', encoding='utf-8') as lf:
         lf.write(s)
