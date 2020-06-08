@@ -20,9 +20,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from Api.settings import *
 from Api.public.menu import menu
-from Api.public.start import start_project
+
 from Api.public.is_replace import is_replace
-from Api.public.create_script import create_script
+
 
 parser = argparse.ArgumentParser(description='先将需要转换的json放入json文件中 命令为python --n 接口名 --u 接口地址 --m 请求方式')
 parser.add_argument('--n', type=str, help='接口名，例如：login，输入%auto可以根据接口地址自动生成接口名')
@@ -31,20 +31,31 @@ parser.add_argument('--m', type=str, help='请求方式，只能输入三种请�
 parser.add_argument('--remark', type=str, help='备注，说明')
 parser.add_argument('-start', type=str, help='生成项目目录，使用方式为 -start 项目名')
 parser.add_argument('-cs', type=str, help='create_script 根据yaml测试用例生成测试脚本，使用方式为 -cs 项目名')
+parser.add_argument('-update', type=str, help='更新工具主程序，使用方式为 -update tools')
 
 args = parser.parse_args()
 
 # 创建项目目录
 start = args.start
 if start:
+    from Api.public.start import start_project
     start_project(start)
     sys.exit(0)
 
 # 通过测试用例生成脚本
 cs = args.cs
 if cs:
+    from Api.public.create_script import create_script
     create_script(cs)
     sys.exit(0)
+
+#更新工具
+update = args.update
+if update:
+    from Api.public.update import Update
+    Update(update)
+    sys.exit(0)
+
 
 url = args.u
 if url == None:
