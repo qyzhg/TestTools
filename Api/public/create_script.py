@@ -64,11 +64,11 @@ def create_script(project_name):
                     break
 
                 elif a == '2':
-                    list(map(make_locustfile, new_list))
+                    list(map(__make_locustfile, new_list))
                     break
 
                 elif a == '3':
-                    list(map(make_apifile, new_list))
+                    list(map(__make_apifile, new_list))
                     break
 
                 elif a.upper() == 'Q' or a == 'QUIT':
