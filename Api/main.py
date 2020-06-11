@@ -18,7 +18,7 @@ import sys
 
 # 版本检查提醒
 Py_version = sys.version_info
-if Py_version.major > 3 and Py_version.minor < 8:
+if Py_version.major == 3 and Py_version.minor < 8:
     print('检测到您的python环境低于3.8，请及时将python版本升级到3.8以上，否则一些功能无法正常使用！')
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
